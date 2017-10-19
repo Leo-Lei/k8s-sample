@@ -1,0 +1,36 @@
+description 'test-k8s-dubbo-api'
+version "1.0.0-SNAPSHOT"
+
+apply plugin: 'maven-publish'
+
+
+jar {
+    baseName = project.description
+    version = project.version
+}
+
+dependencies {
+    //compile("com.qibeitech:business-common-starter")
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifactId project.description
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            if (project.version.endsWith('-SNAPSHOT')) {
+                url "http://114.55.36.61:8087/nexus/content/repositories/snapshots/"
+            } else {
+                url "http://114.55.36.61:8087/nexus/content/repositories/releases/"
+            }
+            credentials {
+                username "admin"
+                password "admin246"
+            }
+        }
+    }
+}

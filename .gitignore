@@ -1,0 +1,7 @@
+.idea
+.gradle
+test-k8s/dubbo-provider/service/build
+test-k8s/dubbo-consumer/build
+test-k8s/dubbo-provider/api/build
+test-k8s/dubbo-provider/build
+

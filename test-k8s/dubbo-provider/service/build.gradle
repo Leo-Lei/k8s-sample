@@ -1,0 +1,26 @@
+plugins {
+    id 'org.springframework.boot' version '1.5.4.RELEASE'
+}
+
+jar {
+    destinationDir = rootProject.file('build/libs')
+    archiveName = 'k8s-dubbo-provider.jar'
+}
+
+dependencies {
+    compile project(":api")
+
+    //compile("com.qibeitech:mybatis-starter")
+    //compile("com.qibeitech:redis-starter")
+    compile("com.qibeitech:dubbo-starter")
+}
+
+configurations {
+//    compile.exclude group: 'log4j'
+    compile.exclude group: 'org.slf4j',  module: 'log4j-over-slf4j'
+    compile.exclude group: 'org.slf4j',  module: 'slf4j-log4j12'
+}
+
+springBoot {
+    executable = true
+}
